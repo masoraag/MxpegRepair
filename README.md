@@ -7,7 +7,7 @@ Repair an MxPEG video recorded by Synology Surveillance Station and converting i
 
 ## Installation 
 1. Download and extract release
-2. Please ffmpeg.exe in the same folder
+2. Place ffmpeg.exe in the same folder
     
 ## Usage
 Drag and drop broken MxPEG video file onto MxpegRepair.exe
