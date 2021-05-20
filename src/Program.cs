@@ -13,6 +13,7 @@
     /// </summary>
     class Program
     {
+        private static string ffmpegFileName = "ffmpeg.exe";
         private static string resultMxgFileName = "result.mxg";
         private static string resultAc3FileName = "result.ac3";
         private static string resultMp4FileName = "result.mp4";
@@ -20,7 +21,15 @@
         {
             if (args.Length != 1)
             {
-                Console.WriteLine("Please provide a file as parameter");
+                Console.WriteLine("Please provide a file as parameter.");
+                Console.Read();
+                return;
+            }
+
+            if (!File.Exists(ffmpegFileName))
+            {
+                Console.WriteLine($"{ffmpegFileName} not found.");
+                Console.Read();
                 return;
             }
 
@@ -68,7 +77,7 @@
             {
                 StartInfo =
                 {
-                    FileName = "ffmpeg.exe",
+                    FileName = ffmpegFileName,
                     Arguments = $"-y -f mxg -i {resultMxgFileName} -max_muxing_queue_size 999999 {resultMp4FileName}",
                     WindowStyle = ProcessWindowStyle.Maximized
                 }
@@ -81,8 +90,8 @@
             {
                 StartInfo =
                 {
-                    FileName = "ffmpeg.exe",
-                    Arguments = $"-y -i {sourceFile} -vn {resultAc3FileName}",
+                    FileName = ffmpegFileName,
+                    Arguments = $"-y -i \"{sourceFile}\" -vn {resultAc3FileName}",
                     WindowStyle = ProcessWindowStyle.Maximized
                 }
             };
@@ -90,15 +99,15 @@
             process.WaitForExit();
 
             var fixedFileName =
-                $"{Path.GetFileNameWithoutExtension(sourceFile)}.fixed{Path.GetExtension(sourceFile)}";
+                $"fixed.{Path.GetFileNameWithoutExtension(sourceFile)}.mp4";
 
             // Merge MP4 video and AC3 audio
             process = new Process
             {
                 StartInfo =
                 {
-                    FileName = "ffmpeg.exe",
-                    Arguments = $"-y -i {resultMp4FileName} -i {resultAc3FileName} -c:v copy -c:a copy {fixedFileName}",
+                    FileName = ffmpegFileName,
+                    Arguments = $"-y -i {resultMp4FileName} -i {resultAc3FileName} -c:v copy -c:a copy \"{fixedFileName}\"",
                     WindowStyle = ProcessWindowStyle.Maximized
                 }
             };
