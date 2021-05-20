@@ -6,6 +6,8 @@
     <RootNamespace>Ch.Masora.MxpegRepair</RootNamespace>
     <Company>Masora AG</Company>
     <Authors>Nico Raschle</Authors>
+    <Version>1.1.0</Version>
+    <Copyright>Masora AG</Copyright>
   </PropertyGroup>
 
 </Project>
