@@ -7,7 +7,7 @@ Repair an MxPEG video recorded by Synology Surveillance Station and converting i
 
 ## Installation 
 1. Download and extract release
-2. Please ffmpeg.exe in the same folder
+2. Place ffmpeg.exe in the same folder
     
 ## Usage
 Drag and drop broken MxPEG video file onto MxpegRepair.exe
@@ -37,7 +37,8 @@ This tool removes all junk audio blocks from such an MxPEG file to make it valid
 The audio is extracted via ffmpeg and then joined with the recovered video to a new, working file.
 
 [Mobotix MxPEG format](https://developer.mobotix.com/docs/mxpeg_frame.html)
-[JPEG file format] (https://de.wikipedia.org/wiki/JPEG_File_Interchange_Format)
+
+[JPEG file format](https://de.wikipedia.org/wiki/JPEG_File_Interchange_Format)
   
 ## License
 [![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](LICENSE)
