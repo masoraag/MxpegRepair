@@ -37,6 +37,7 @@ This tool removes all junk audio blocks from such an MxPEG file to make it valid
 The audio is extracted via ffmpeg and then joined with the recovered video to a new, working file.
 
 [Mobotix MxPEG format](https://developer.mobotix.com/docs/mxpeg_frame.html)
+
 [JPEG file format](https://de.wikipedia.org/wiki/JPEG_File_Interchange_Format)
   
 ## License
