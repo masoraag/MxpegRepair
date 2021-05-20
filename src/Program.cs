@@ -63,20 +63,20 @@
             }
             Console.WriteLine($"MxPEG frames read: {frameCount}");
 
-            // Convert MxPEG video to MP4/H264
+            // Convert repaired MxPEG video to MP4/H264
             var process = new Process
             {
                 StartInfo =
                 {
                     FileName = "ffmpeg.exe",
-                    Arguments = "-y -f mxg -i result.mxg -max_muxing_queue_size 999999 result.mp4",
+                    Arguments = $"-y -f mxg -i {resultMxgFileName} -max_muxing_queue_size 999999 {resultMp4FileName}",
                     WindowStyle = ProcessWindowStyle.Maximized
                 }
             };
             process.Start();
             process.WaitForExit();
 
-            // Convert MxPEG audio to AC3
+            // Convert source MxPEG audio to AC3
             process = new Process
             {
                 StartInfo =
@@ -98,7 +98,7 @@
                 StartInfo =
                 {
                     FileName = "ffmpeg.exe",
-                    Arguments = $"-y -i {resultMp4FileName} -i result.ac3 -c:v copy -c:a copy {fixedFileName}",
+                    Arguments = $"-y -i {resultMp4FileName} -i {resultAc3FileName} -c:v copy -c:a copy {fixedFileName}",
                     WindowStyle = ProcessWindowStyle.Maximized
                 }
             };
